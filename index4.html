@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="d3/d3.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title> Axes </title>
+  </head>
+  <body>
+    <script type="text/javascript" language="javascript">
+    var margin = {
+      top: 30,
+      right: 30,
+      bottom: 30,
+      left: 30}
+    var width = 600 - margin.left - margin.right;
+    var height = 400 - margin.top - margin.bottom;
+
+    var x = d3.scaleLinear().range([0, width]);
+    var y = d3.scaleLinear().range([height, 0]);
+    var xAxis = d3.axisBottom(x).tickSize(-height);
+    var yAxis = d3.axisLeft(y).tickSize(width);
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    svg.append("g")
+        .call(xAxis)
+        .attr("transform", "translate(0," + height + ")");
+
+    svg.append("g")
+        .call(yAxis)
+        .attr("transform", "translate(" + width + ",0)")
+        .attr("stroke-dasharray", "5,2");
+
+    </script>
+  </body>
+</html>
