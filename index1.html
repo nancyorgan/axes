@@ -14,13 +14,13 @@
       top: 30,
       right: 30,
       bottom: 30,
-      left: 30}
+      left: 30};
     var width = 600 - margin.left - margin.right;
     var height = 400 - margin.top - margin.bottom;
 
     var x = d3.scaleLinear().range([0, width]);
     var y = d3.scaleLinear().range([height, 0]);
-    var xAxis = d3.axisBottom(x)
+    var xAxis = d3.axisBottom(x);
     var yAxis = d3.axisLeft(y);
 
     var svg = d3.select("body").append("svg")
