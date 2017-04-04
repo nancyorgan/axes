@@ -2,14 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <!--script type="text/javascript" src="d3/d3.js"></script -->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <title> Axes </title>
+    <script
+        src="https://d3js.org/d3.v4.min.js"
+        type="text/javascript"
+        language="javascript">
+    </script>
   </head>
   <body>
-    <script type="text/javascript" language="javascript">
-    // plain axes
+  <script>
     var margin = {
       top: 30,
       right: 30,
@@ -19,7 +19,7 @@
     var height = 400 - margin.top - margin.bottom;
 
     var x = d3.scaleLinear().range([0, width]);
-    var y = d3.scaleLinear().range([height, 0]);
+    var y = d3.scaleLinear().range([0, height]);
     var xAxis = d3.axisBottom(x);
     var yAxis = d3.axisLeft(y);
 
@@ -29,8 +29,11 @@
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    svg.append("g").call(xAxis).attr("transform", "translate(0," + height + ")");
-    svg.append("g").call(yAxis);
+    svg.append("g")
+       .call(xAxis)
+       .attr("transform", "translate(0," + height + ")");
+    svg.append("g")
+       .call(yAxis);
 
     </script>
   </body>
