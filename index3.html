@@ -41,13 +41,13 @@ var xAxis = d3.axisBottom().scale(x).tickSize([0]);
 var yAxis = d3.axisLeft().scale(y).tickSize([0]);
 
 var xGridlines = d3.axisBottom().scale(x)
-    .tickSize(-height,-height)
+    .tickSize([-height])
     .tickFormat("");
 
 var yGridlines = d3.axisLeft().scale(y)
-    .tickSize(-width,0,0)
+    .tickSize([-width])
     .tickFormat("");
-		
+
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -64,8 +64,6 @@ d3.csv("diamonds.csv", function(error, data) {
   data.forEach(function(d) {
     d.depth = +d.depth;
     d.x = +d.x;
-    d.price = +d.price;
-    d.carat = +d.carat;
   });
 
   var xMin = d3.min(data, function(d){return d.x});
@@ -75,6 +73,7 @@ d3.csv("diamonds.csv", function(error, data) {
 
   x.domain([xMin - 1, xMax + 1]);
   y.domain([yMin - 1, yMax + 1]);
+
 
   // x-axis
   svg.append("g")
