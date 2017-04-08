@@ -28,7 +28,7 @@
     var margin = {
       top: 30,
       right: 30,
-      bottom: 30,
+      bottom: 50,
       left: 30}
     var width = 600 - margin.left - margin.right;
     var height = 400 - margin.top - margin.bottom
@@ -47,11 +47,9 @@
         var yAxis = d3.axisLeft(y)
             .tickFormat(function(d) { return "$" + numFormat(d); });
 
-
-
-        var line = d3.line()
+        /*var line = d3.line()
                 .x(function(d) { return x(d.date); })
-                .y(function(d) { return y(d.pce); });
+                .y(function(d) { return y(d.pce); });*/
 
         var svg = d3.select("body")
 		      .append("svg")
