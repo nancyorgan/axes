@@ -8,16 +8,20 @@
         language="javascript">
     </script>
     <style>
+
         .gridline path,
         .gridline line {
+        	fill: none;
         	stroke: white;
         }
 
+				.axis text {
+					fill: gray;
+				}
         .label {
-          stroke: none;
-          fill: black;
           font-size: 10pt;
         }
+
         </style>
 	</head>
     <body>
@@ -33,6 +37,7 @@
 
 var x = d3.scaleLinear().range([0, width]);
 var y = d3.scaleLinear().range([height, 0]);
+
 var xAxis = d3.axisBottom().scale(x).tickSize([0]);
 var yAxis = d3.axisLeft().scale(y).tickSize([0]);
 
@@ -80,6 +85,7 @@ d3.csv("diamonds.csv", function(error, data) {
       .attr("x", width/2 + margin.left)
       .attr("y", 30)
       .style("text-anchor", "end")
+			.style("fill", "black")
       .text("X Value Label");
 
   // y-axis
@@ -89,22 +95,33 @@ d3.csv("diamonds.csv", function(error, data) {
     .append("text")
       .attr("class", "label")
       .attr("transform", "rotate(-90)")
-      .attr("x", -width/2 + margin.left + margin.right)
+      .attr("x", -height/2 )
       .attr("y", -20)
       .style("text-anchor", "end")
+			.style("fill", "black")
       .text("Depth");
 
-      svg.append("g")
-          .attr("class", "gridline")
-          .attr("transform", "translate(0," + height + ")")
-          .call(xGridlines);
+  svg.append("g")
+      .attr("class", "gridline")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xGridlines);
 
-      svg.append("g")
-          .attr("class", "gridline")
-          .call(yGridlines);
+  svg.append("g")
+      .attr("class", "gridline")
+      .call(yGridlines);
 
   svg.selectAll("g")
       .data(data);
+
+	svg.append("g")
+			.attr("class", "title")
+			.append("text")
+			.attr("x", 0)
+			.attr("y", 0 - (margin.top / 3))
+			.attr("text-anchor", "left")
+			.style("font-size", "16px")
+			.style("font-family", "Arial")
+			.text("This is the Title in D3");
 
 });
 
