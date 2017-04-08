@@ -19,7 +19,7 @@
     var height = 400 - margin.top - margin.bottom;
 
     var x = d3.scaleLinear().range([0, width]);
-    var y = d3.scaleLinear().range([0, height]);
+    var y = d3.scaleLinear().range([height, 0]);
     var xAxis = d3.axisBottom(x);
     var yAxis = d3.axisLeft(y);
 

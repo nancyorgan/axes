@@ -38,6 +38,16 @@
         .attr("transform", "translate(" + width + ",0)")
         .attr("stroke-dasharray", "5,2");
 
+    svg.append("g")
+        .attr("class", "title")
+        .append("text")
+        .attr("x", 0)
+        .attr("y", -5)
+        .attr("text-anchor", "left")
+        .style("font-size", "16px")
+        .style("font-family", "Arial")
+        .text("This is the Title in D3");
+
     </script>
   </body>
 </html>
