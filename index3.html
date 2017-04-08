@@ -8,12 +8,9 @@
         language="javascript">
     </script>
     <style>
-
         .gridline path,
         .gridline line {
-        	fill: none;
         	stroke: white;
-        	shape-rendering: crispEdges;
         }
 
         .label {
@@ -21,7 +18,6 @@
           fill: black;
           font-size: 10pt;
         }
-
         </style>
 	</head>
     <body>
@@ -74,10 +70,9 @@ d3.csv("diamonds.csv", function(error, data) {
   x.domain([xMin - 1, xMax + 1]);
   y.domain([yMin - 1, yMax + 1]);
 
-
   // x-axis
   svg.append("g")
-      .attr("class", "x axis")
+      .attr("class", "axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
     .append("text")
@@ -89,7 +84,7 @@ d3.csv("diamonds.csv", function(error, data) {
 
   // y-axis
   svg.append("g")
-      .attr("class", "y axis")
+      .attr("class", "axis")
       .call(yAxis)
     .append("text")
       .attr("class", "label")
