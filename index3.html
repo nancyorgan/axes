@@ -28,7 +28,7 @@
         <script>
 
 				var margin = {
-					top: 50,
+					top: 30,
 					right: 30,
 					bottom: 30,
 					left: 30};
@@ -117,7 +117,7 @@ d3.csv("diamonds.csv", function(error, data) {
 			.attr("class", "title")
 			.append("text")
 			.attr("x", 0)
-			.attr("y", 0 - (margin.top / 3))
+			.attr("y", -5)
 			.attr("text-anchor", "left")
 			.style("font-size", "16px")
 			.style("font-family", "Arial")
