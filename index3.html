@@ -22,7 +22,7 @@
           font-size: 10pt;
         }
 
-        </style>
+      </style>
 	</head>
     <body>
         <script>
@@ -35,96 +35,95 @@
 				var width = 600 - margin.left - margin.right;
 				var height = 400 - margin.top - margin.bottom;
 
-var x = d3.scaleLinear().range([0, width]);
-var y = d3.scaleLinear().range([height, 0]);
+				var x = d3.scaleLinear().range([0, width]);
+				var y = d3.scaleLinear().range([height, 0]);
 
-var xAxis = d3.axisBottom().scale(x).tickSize([0]);
-var yAxis = d3.axisLeft().scale(y).tickSize([0]);
+				var xAxis = d3.axisBottom().scale(x).tickSize([4]).tickSizeOuter([0]);
+				var yAxis = d3.axisLeft().scale(y).tickSize([4]).tickSizeOuter([0]);
 
-var xGridlines = d3.axisBottom().scale(x)
-    .tickSize([-height])
-    .tickFormat("");
+				var xGridlines = d3.axisBottom().scale(x)
+				    .tickSize([-height])
+				    .tickFormat("");
 
-var yGridlines = d3.axisLeft().scale(y)
-    .tickSize([-width])
-    .tickFormat("");
+				var yGridlines = d3.axisLeft().scale(y)
+				    .tickSize([-width])
+				    .tickFormat("");
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+				var svg = d3.select("body").append("svg")
+				    .attr("width", width + margin.left + margin.right)
+				    .attr("height", height + margin.top + margin.bottom)
+				    .append("g")
+				    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var rectangle = svg.append("rect")
-    .attr("width", width)
-    .attr("height", height)
-    .style('opacity', 0.7)
-    .style('fill', '#E6E6E6');
+				var rectangle = svg.append("rect")
+				    .attr("width", width)
+				    .attr("height", height)
+				    .style('opacity', 0.7)
+				    .style('fill', '#E6E6E6');
 
-d3.csv("diamonds.csv", function(error, data) {
-  data.forEach(function(d) {
-    d.depth = +d.depth;
-    d.x = +d.x;
-  });
+				d3.csv("diamonds.csv", function(error, data) {
+				  data.forEach(function(d) {
+				    d.depth = +d.depth;
+				    d.x = +d.x;
+				  });
 
-  var xMin = d3.min(data, function(d){return d.x});
-  var xMax = d3.max(data, function(d){return d.x});
-  var yMin = d3.min(data, function(d){return d.depth});
-  var yMax = d3.max(data, function(d){return d.depth});
+				  var xMin = d3.min(data, function(d){return d.x});
+				  var xMax = d3.max(data, function(d){return d.x});
+				  var yMin = d3.min(data, function(d){return d.depth});
+				  var yMax = d3.max(data, function(d){return d.depth});
 
-  x.domain([xMin - 1, xMax + 1]);
-  y.domain([yMin - 1, yMax + 1]);
+				  x.domain([xMin - 1, xMax + 1]);
+				  y.domain([yMin - 1, yMax + 1]);
 
-  // x-axis
-  svg.append("g")
-      .attr("class", "axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
-    .append("text")
-      .attr("class", "label")
-      .attr("x", width/2)
-      .attr("y", 30)
-      .style("text-anchor", "middle")
-			.style("fill", "black")
-      .text("X Value Label");
+				  // x-axis
+				  svg.append("g")
+				      .attr("class", "axis")
+				      .attr("transform", "translate(0," + height + ")")
+				      .call(xAxis)
+				    .append("text")
+				      .attr("class", "label")
+				      .attr("x", width/2)
+				      .attr("y", 30)
+				      .style("text-anchor", "middle")
+							.style("fill", "black")
+				      .text("X Value Label");
 
-  // y-axis
-  svg.append("g")
-      .attr("class", "axis")
-      .call(yAxis)
-    .append("text")
-      .attr("class", "label")
-      .attr("transform", "rotate(-90)")
-      .attr("x", -height/2 )
-      .attr("y", -20)
-      .style("text-anchor", "middle")
-			.style("fill", "black")
-      .text("Depth");
+				  // y-axis
+				  svg.append("g")
+				      .attr("class", "axis")
+				      .call(yAxis)
+				    .append("text")
+				      .attr("class", "label")
+				      .attr("transform", "rotate(-90)")
+				      .attr("x", -height/2 )
+				      .attr("y", -20)
+				      .style("text-anchor", "middle")
+							.style("fill", "black")
+				      .text("Depth");
 
-  svg.append("g")
-      .attr("class", "gridline")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xGridlines);
+				  svg.append("g")
+				      .attr("class", "gridline")
+				      .attr("transform", "translate(0," + height + ")")
+				      .call(xGridlines);
 
-  svg.append("g")
-      .attr("class", "gridline")
-      .call(yGridlines);
+				  svg.append("g")
+				      .attr("class", "gridline")
+				      .call(yGridlines);
 
-  svg.selectAll("g")
-      .data(data);
+				  svg.selectAll("g")
+				      .data(data);
 
-	svg.append("g")
-			.attr("class", "title")
-			.append("text")
-			.attr("x", 0)
-			.attr("y", -5)
-			.attr("text-anchor", "left")
-			.style("font-size", "16px")
-			.style("font-family", "Arial")
-			.text("This is the Title in D3");
+					svg.append("g")
+							.attr("class", "title")
+							.append("text")
+							.attr("x", 0)
+							.attr("y", -5)
+							.attr("text-anchor", "left")
+							.style("font-size", "16px")
+							.style("font-family", "Arial")
+							.text("This is the Title in D3");
+				});
 
-});
-
-</script>
-</body>
+			</script>
+		</body>
 </html>

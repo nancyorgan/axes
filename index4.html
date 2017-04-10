@@ -20,8 +20,8 @@
 
     var x = d3.scaleLinear().range([0, width]);
     var y = d3.scaleLinear().range([height, 0]);
-    var xAxis = d3.axisBottom(x).tickSize(-height);
-    var yAxis = d3.axisLeft(y).tickSize(width);
+    var xAxis = d3.axisBottom(x).tickSize([-height]);
+    var yAxis = d3.axisLeft(y).tickSize([width]);
 
     var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
