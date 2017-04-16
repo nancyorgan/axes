@@ -7,26 +7,38 @@
         type="text/javascript"
         language="javascript">
     </script>
-    </head>
-  <body>
-    <script type="text/javascript" language="javascript">
+    <style>
+    path
+    {
+        fill: none;
+        stroke: #000;
+    }
 
-    var margin = {
-      top: 30,
-      right: 30,
-      bottom: 70,
-      left: 70};
-    var width = 600 - margin.left - margin.right;
-    var height = 400 - margin.top - margin.bottom;
+    .label {
+      font-size: 10pt;
+    }
 
-    var x = d3.scaleTime().range([0, width]);
-    var y = d3.scaleLinear().range([height, 0]);
+    </style>
+      </head>
+      <body>
+        <script>
+
+        var margin = {
+            top: 30,
+            right: 30,
+            bottom: 60,
+            left: 60};
+        var width = 500 - margin.left - margin.right;
+        var height = 350 - margin.top - margin.bottom;
 
         var parseTime = d3.timeParse("%Y-%m-%d");
-        var numFormat = d3.formatPrefix(",.0", 1e3);
+        var numFormat = d3.formatPrefix(",.0", 1e3)
+
+        var x = d3.scaleTime().range([0, width]);
+        var y = d3.scaleLinear().range([height, 0]);
 
         var xAxis = d3.axisBottom(x)
-            .tickFormat(d3.timeFormat("%b-%Y"));
+            .tickFormat(d3.timeFormat("%b-%Y"))
 
         var yAxis = d3.axisLeft(y)
             .tickFormat(function(d) { return "$" + numFormat(d); });
@@ -48,26 +60,28 @@
           y.domain(d3.extent(data, function(d) { return d.pce;  })).nice();
 
           svg.append("g")
-             .attr("transform", "translate(0," + height + ")")
-             .attr("class", "axis")
-             .call(xAxis)
-             .selectAll("text")
-             .attr("y", 5)
-             .attr("x", -5)
-             .attr("transform", "rotate(-45)");
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + height + ")")
+              .call(xAxis)
+            .selectAll("text")
+              .attr("y", 5)
+              .attr("x", -5)
+              .attr("transform", "rotate(-45)")
+              .style("text-anchor", "end");
 
           svg.append("g")
-              .attr("class", "axis")
+              .attr("class", "y axis")
               .call(yAxis)
-            .append("text")
-              .attr("class", "label")
-              .attr("transform", "rotate(-90)")
-              .attr("x", -height/2 )
-              .attr("y", -40)
-              .style("text-anchor", "middle")
-              .style("fill", "black")
-              .text("Price");
-	});
+              .append("text")
+                .attr("class", "label")
+                .attr("transform", "rotate(-90)")
+                .attr("y", -margin.left/1.5)
+                .attr("x", -height/2)
+                .style("text-anchor", "middle")
+                .style("fill", "black")
+                .text("Personal consumption expenditures");
+
+          });
 	   </script>
   </body>
 </html>
