@@ -52,12 +52,9 @@
              .attr("class", "axis")
              .call(xAxis)
              .selectAll("text")
-             .attr("transform", "rotate(45)")
-             .style("text-anchor", "start")
-             .attr("x", 5)
              .attr("y", 5)
-             .attr("dy", ".35em")
-
+             .attr("x", -5)
+             .attr("transform", "rotate(-45)");
 
           svg.append("g")
               .attr("class", "axis")
