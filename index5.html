@@ -32,13 +32,13 @@
         var height = 350 - margin.top - margin.bottom;
 
         var parseTime = d3.timeParse("%Y-%m-%d");
-        var numFormat = d3.formatPrefix(",.0", 1e3)
+        var numFormat = d3.formatPrefix(",.0", 1e3);
 
         var x = d3.scaleTime().range([0, width]);
         var y = d3.scaleLinear().range([height, 0]);
 
         var xAxis = d3.axisBottom(x)
-            .tickFormat(d3.timeFormat("%b-%Y"))
+            .tickFormat(d3.timeFormat("%b-%Y"));
 
         var yAxis = d3.axisLeft(y)
             .tickFormat(function(d) { return "$" + numFormat(d); });
